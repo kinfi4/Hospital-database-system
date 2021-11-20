@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS Doctor_appointment (
     time TIMESTAMP NOT NULL,
     reason TEXT NULL,
     is_closed BOOL DEFAULT FALSE,
-    duration INTERVAL NOT NULL,
+    duration_minutes INT NOT NULL,
 
     FOREIGN KEY (patient_id) REFERENCES Patient(id),
     FOREIGN KEY (doctor_id) REFERENCES Doctor(id),

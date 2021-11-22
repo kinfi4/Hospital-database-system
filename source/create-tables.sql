@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS Hospital (
 );
 
 CREATE TABLE IF NOT EXISTS Department (
-    id          SERIAL PRIMARY KEY,
-    name        VARCHAR(255) NOT NULL,
-    hospital_id INT          NOT NULL,
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    hospital_id INT NOT NULL,
 
     CONSTRAINT fk_on_hospital
         FOREIGN KEY (hospital_id) REFERENCES hospital (id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS Doctor_appointment (
     patient_id INT NOT NULL,
     doctor_id INT NOT NULL,
     hospital_id INT NOT NULL,
-    cabinet_id INT NOT NULL,
+    cabinet_number INT NOT NULL,
     time TIMESTAMP NOT NULL,
     reason TEXT NULL,
     is_closed BOOL DEFAULT FALSE,
@@ -98,5 +98,5 @@ CREATE TABLE IF NOT EXISTS Doctor_appointment (
 
     FOREIGN KEY (patient_id) REFERENCES Patient(id),
     FOREIGN KEY (doctor_id) REFERENCES Doctor(id),
-    FOREIGN KEY (hospital_id, cabinet_id) REFERENCES Cabinet(hospital_id, number)
+    FOREIGN KEY (hospital_id, cabinet_number) REFERENCES Cabinet(hospital_id, number)
 );

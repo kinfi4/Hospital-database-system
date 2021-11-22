@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Doctor(
 
     specialization_id INT NULL,
     department_id INT NULL,
-    timetable_id INT NOT NULL,
+    timetable_id INT NULL,
 
     FOREIGN KEY (specialization_id) REFERENCES Doctor_specialization (id),
     FOREIGN KEY (department_id) REFERENCES Department(id)
@@ -63,14 +63,11 @@ CREATE TABLE IF NOT EXISTS Doctor(
 
 CREATE TABLE IF NOT EXISTS Doctor_timetable (
     id SERIAL PRIMARY KEY,
-    doctor_id INT NOT NULl,
     monday_timetable VARCHAR(255),
     tuesday_timetable VARCHAR(255),
     wednesday_timetable VARCHAR(255),
     thursday_timetable VARCHAR(255),
-    friday_timetable VARCHAR(255),
-
-    FOREIGN KEY (doctor_id) REFERENCES Doctor(id)
+    friday_timetable VARCHAR(255)
 );
 
 ALTER TABLE Doctor
@@ -81,6 +78,7 @@ CREATE TABLE IF NOT EXISTS Medical_procedure (
     id SERIAL PRIMARY KEY,
     equipment_id INT NOT NULL,
     time TIMESTAMP NOT NULL,
+    duration_minutes INT NOT NULL,
     patient_id INT NOT NULL,
 
     FOREIGN KEY (equipment_id) REFERENCES Equipment (id),

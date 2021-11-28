@@ -10,11 +10,12 @@ $check_app_time$
     BEGIN
         SELECT extract(ISODOW FROM New.time) INTO day_of_week;
         SELECT get_doctor_timetable(New.doctor_id, day_of_week) INTO timetable;
+
         SELECT concat(
                 'Patient: ',
                 New.patient_id::VARCHAR, ' cant have an appointment with doctor: ',
                 New.doctor_id::VARCHAR, ' at ',
-                New.time::VARCHAR, ' because doctor is not working at that time'
+                New.time::VARCHAR, ' because doctor is not working at that time.'
             ) INTO error_message;
 
 
@@ -29,10 +30,10 @@ $check_app_time$
         END IF;
 
         -- 16:00-19:15
-        IF extract(HOUR FROM New.time) >= substr(timetable, 1, 2)::INT  -- 16
-               AND extract(MINUTE FROM New.time) >= substr(timetable, 4, 2)::INT  -- 00
-               AND extract(HOUR FROM New.time) <= substr(timetable, 7, 2)::INT  -- 19
-               AND extract(MINUTE FROM New.time) <= substr(timetable, 10, 2)::INT  -- 15
+        IF (extract(HOUR FROM New.time) > substr(timetable, 1, 2)::INT  -- 16
+                    OR (extract(HOUR FROM New.time) = substr(timetable, 1, 2)::INT AND extract(MINUTE FROM New.time) >= substr(timetable, 4, 2)::INT)  -- 00
+               AND (extract(HOUR FROM New.time) < substr(timetable, 7, 2)::INT  -- 19
+                    OR (extract(HOUR FROM New.time) = substr(timetable, 7, 2)::INT AND extract(MINUTE FROM New.time) <= substr(timetable, 10, 2)::INT)))  -- 15
         THEN
             RETURN New;
         END IF;

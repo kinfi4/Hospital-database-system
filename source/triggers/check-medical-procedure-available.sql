@@ -13,11 +13,11 @@ $check_medical_proc_func$
                 New.time::VARCHAR, ' because it is busy at that moment.'
             ) INTO error_message;
 
-        IF (
-            SELECT count(*) FROM medical_procedure
-            WHERE New.time >= time
+        IF exists(
+            SELECT 1 FROM medical_procedure
+            WHERE (equipment_id = New.equipment_id OR patient_id = New.patient_id) AND New.time >= time
                 AND New.time <= (time + (duration_minutes || ' minutes')::INTERVAL)
-        ) > 0
+        )
         THEN
             SELECT raise_error(error_message);
         END IF;

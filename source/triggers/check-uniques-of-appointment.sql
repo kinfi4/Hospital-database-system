@@ -13,6 +13,11 @@ $check_uniques_appointment$
                 New.time::VARCHAR, ' because cabinet is busy at that moment or doctor or patient is having another appointment at that time'
             ) INTO error_message;
 
+        IF New.is_closed = True -- that means we are trying to close the appointment
+        THEN
+           RETURN new;
+        END IF;
+
         IF exists(
             SELECT 1 FROM doctor_appointment
             WHERE (doctor_id = New.doctor_id OR patient_id = New.patient_id OR (New.cabinet_number = cabinet_number AND New.hospital_id = hospital_id))

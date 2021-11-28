@@ -17,6 +17,12 @@ $check_app_time$
                 New.time::VARCHAR, ' because doctor is not working at that time'
             ) INTO error_message;
 
+
+        IF New.is_closed = True -- that means we are trying to close the appointment
+        THEN
+           RETURN New;
+        END IF;
+
         IF day_of_week = 6 OR day_of_week = 7  -- checking weekends
         THEN
             SELECT raise_error(error_message);

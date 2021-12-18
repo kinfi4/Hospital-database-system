@@ -19,14 +19,20 @@ $$
             FROM doctor doc
         LOOP
             IF (
-                  (extract(HOUR FROM for_time) > substr(row.timetable, 1, 2)::INT  -- 16
-                    OR (extract(HOUR FROM for_time) = substr(row.timetable, 1, 2)::INT AND extract(MINUTE FROM for_time) >= substr(row.timetable, 4, 2)::INT))  -- 00
-                  AND (extract(HOUR FROM for_time) < substr(row.timetable, 7, 2)::INT  -- 19
-                    OR (extract(HOUR FROM for_time) = substr(row.timetable, 7, 2)::INT AND extract(MINUTE FROM for_time) <= substr(row.timetable, 10, 2)::INT))
+                  (
+                      extract(HOUR FROM for_time) > substr(row.timetable, 1, 2)::INT
+                        OR (extract(HOUR FROM for_time) = substr(row.timetable, 1, 2)::INT AND extract(MINUTE FROM for_time) >= substr(row.timetable, 4, 2)::INT)
+                  )
+                  AND
+                  (
+                      extract(HOUR FROM for_time) < substr(row.timetable, 7, 2)::INT
+                        OR (extract(HOUR FROM for_time) = substr(row.timetable, 7, 2)::INT AND extract(MINUTE FROM for_time) <= substr(row.timetable, 10, 2)::INT)
+                  )
             ) THEN
                 doctor_id := row.doc_id;
                 doctor_name := row.doc_name;
                 doctor_timetable := row.timetable;
+
                 RETURN NEXT;
               ELSE
                 RAISE INFO 'Doctor timetable: %', row.timetable;

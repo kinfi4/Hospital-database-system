@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Hospital (
+CREATE TABLE IF NOT EXISTS Building (
     id SERIAL PRIMARY KEY,
     address VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL
@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS Hospital (
 CREATE TABLE IF NOT EXISTS Department (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    hospital_id INT NOT NULL,
+    building_id INT NOT NULL,
 
-    CONSTRAINT fk_on_hospital
-        FOREIGN KEY (hospital_id) REFERENCES hospital (id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_on_building
+        FOREIGN KEY (building_id) REFERENCES Building (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Equipment (
@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS Patient (
 );
 
 CREATE TABLE IF NOT EXISTS Cabinet (
-    hospital_id INT NOT NULL,
+    building_id INT NOT NULL,
     number INT NOT NULL,
 
-    PRIMARY KEY (hospital_id, number)
+    PRIMARY KEY (building_id, number)
 );
 
 CREATE TABLE IF NOT EXISTS Doctor(
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS Doctor_appointment (
     id SERIAL PRIMARY KEY,
     patient_id INT NOT NULL,
     doctor_id INT NOT NULL,
-    hospital_id INT NOT NULL,
+    building_id INT NOT NULL,
     cabinet_number INT NOT NULL,
     time TIMESTAMP NOT NULL,
     reason TEXT NULL,
@@ -98,5 +98,5 @@ CREATE TABLE IF NOT EXISTS Doctor_appointment (
 
     FOREIGN KEY (patient_id) REFERENCES Patient(id),
     FOREIGN KEY (doctor_id) REFERENCES Doctor(id),
-    FOREIGN KEY (hospital_id, cabinet_number) REFERENCES Cabinet(hospital_id, number)
+    FOREIGN KEY (building_id, cabinet_number) REFERENCES Cabinet(building_id, number)
 );

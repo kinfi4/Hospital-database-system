@@ -7,12 +7,12 @@ WITH count_department_appointmets (doctor_id, number_of_appointments) AS (
     GROUP BY doc.id
 )
 SELECT
-    h.name AS hospital_name,
+    h.name AS building_name,
     doc.first_name || ' ' || doc.last_name AS full_name,
     rank() OVER (PARTITION BY h.name ORDER BY cda.number_of_appointments DESC),
     cda.number_of_appointments
 FROM doctor doc
     JOIN department d ON department_id = d.id
-    JOIN hospital h ON hospital_id = h.id
+    JOIN building h ON building_id = h.id
     JOIN count_department_appointmets cda ON cda.doctor_id = doc.id
-ORDER BY hospital_name, number_of_appointments DESC;
+ORDER BY building_name, number_of_appointments DESC;

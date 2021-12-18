@@ -22,5 +22,5 @@ SELECT
 FROM department
     JOIN count_departments_procedures ON count_departments_procedures.department_id = department.id
     JOIN count_department_appointmets ON count_department_appointmets.department_id = department.id
-    JOIN hospital h ON hospital_id = h.id
+    JOIN building h ON building_id = h.id
 ORDER BY difference_between_procedures_and_appointments;

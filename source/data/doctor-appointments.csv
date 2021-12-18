@@ -1,4 +1,4 @@
-id,patient_id,doctor_id,time,duration_minutes,hospital_id,cabinet_number,reason,is_closed
+id,patient_id,doctor_id,time,duration_minutes,building_id,cabinet_number,reason,is_closed
 1,73,35,2021-12-28T06:09:42.747Z,35,1,15,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been,false
 2,67,7,2021-11-30T15:18:51.593Z,10,3,149,"the industry's standard dummy text ever since the 1500s, when an unknown",false
 3,52,23,2021-11-27T10:48:45.495Z,25,3,169,"Contrary to popular belief, Lorem Ipsum is not simply random ",false

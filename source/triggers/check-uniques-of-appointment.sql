@@ -20,7 +20,7 @@ $check_uniques_appointment$
 
         IF exists(
             SELECT 1 FROM doctor_appointment
-            WHERE (doctor_id = New.doctor_id OR patient_id = New.patient_id OR (New.cabinet_number = cabinet_number AND New.hospital_id = hospital_id))
+            WHERE (doctor_id = New.doctor_id OR patient_id = New.patient_id OR (New.cabinet_number = cabinet_number AND New.building_id = building_id))
                     AND New.time >= time
                     AND New.time <= (time + (duration_minutes || ' minutes')::INTERVAL)
                     AND is_closed = False

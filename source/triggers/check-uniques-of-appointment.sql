@@ -34,4 +34,10 @@ $check_uniques_appointment$
 $check_uniques_appointment$;
 
 CREATE TRIGGER check_uniques_of_appointment BEFORE INSERT OR UPDATE ON doctor_appointment
-    FOR EACH ROW EXECUTE PROCEDURE check_uniques_of_appointment_func()
+    FOR EACH ROW EXECUTE PROCEDURE check_uniques_of_appointment_func();
+
+
+SELECT * FROM doctor_appointment;
+
+INSERT INTO doctor_appointment (id, patient_id, doctor_id, building_id, cabinet_number, time, reason, is_closed, duration_minutes) VALUES
+(100, 1, 7, 3, 149, '2021-11-30 15:18:51.593000', 'some reason', false, 23);

@@ -1,3 +1,7 @@
+-----------------------------------------------
+--- Get specific patient appointments
+-----------------------------------------------
+
 SELECT
     doctor.first_name AS doctor_name,
     p.first_name AS patient_name,

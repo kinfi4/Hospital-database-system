@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Counting the number of doctors for each
+--- specialization for each department
+-----------------------------------------------
+
 SELECT
     d.name AS department_name,
     ds.name AS specialization_name,

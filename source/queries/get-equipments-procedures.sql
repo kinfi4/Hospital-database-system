@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Get all medical procedures for specific equipment
+---
+-----------------------------------------------
+
 SELECT
     equipment.model AS Model,
     d.name AS department_name,

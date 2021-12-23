@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Get all doctor appointments, ordered by
+--- number of appointments of the doctor using WINDOWS FUNCTIONSa
+-----------------------------------------------
+
 SELECT
     doc.id,
     doc.first_name || ' ' || doc.last_name AS full_name,

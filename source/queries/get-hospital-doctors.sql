@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Get details of all doctors in the
+--- National Hostital of Chernigiv
+-----------------------------------------------
+
 SELECT
     building.name,
     department.name,

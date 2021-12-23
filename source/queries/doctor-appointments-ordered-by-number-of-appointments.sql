@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Get all doctor appointments, ordered by
+--- number of appointments of the doctor using WITH statement
+-----------------------------------------------
+
 WITH ordered_doctors(doc_id, number_of_appointments) AS (
     SELECT doc.id, count(*) FROM doctor doc
         JOIN doctor_appointment d ON doc.id = d.doctor_id

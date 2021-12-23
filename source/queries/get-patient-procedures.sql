@@ -1,3 +1,7 @@
+-----------------------------------------------
+--- Get all upcoming medical procedures
+-----------------------------------------------
+
 SELECT
     patient.first_name || ' ' || patient.last_name AS full_patient_name,
     time AS procedure_time,

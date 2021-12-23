@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Counting the number of doctors for each
+--- specialization
+-----------------------------------------------
+
 SELECT
     ds.name AS specializatoin_name,
     count(*) AS number_of_specialists

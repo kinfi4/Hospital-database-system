@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Get doctor ranks by number of appointments
+--- by building
+-----------------------------------------------
+
 WITH count_department_appointmets (doctor_id, number_of_appointments) AS (
     SELECT
         doc.id,

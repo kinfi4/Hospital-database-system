@@ -1,3 +1,7 @@
+-----------------------------------------------
+--- Get doctors timetables for current day
+-----------------------------------------------
+
 SELECT
     doc.first_name || ' ' || doc.last_name AS full_name,
     CASE

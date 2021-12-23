@@ -1,3 +1,8 @@
+-----------------------------------------------
+--- Counting difference between procedures
+--- abd appointments
+-----------------------------------------------
+
 WITH count_departments_procedures (department_id, number_of_procedures) AS (
     SELECT
         department.id,

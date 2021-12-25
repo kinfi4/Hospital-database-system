@@ -9,5 +9,5 @@ SELECT
 FROM doctor
     JOIN doctor_appointment da on doctor.id = da.doctor_id
     JOIN patient p on da.patient_id = p.id
-WHERE p.id = 11
+WHERE p.first_name = 'Christal' AND p.last_name = 'Graig'
 ORDER BY doctor_name, patient_name;

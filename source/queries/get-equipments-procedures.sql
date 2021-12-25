@@ -14,5 +14,5 @@ FROM equipment
     JOIN medical_procedure mp on equipment.id = mp.equipment_id
     JOIN patient p on mp.patient_id = p.id
     JOIN department d on equipment.department_id = d.id
-WHERE equipment.id = 1
+WHERE equipment.model = 'Ингалятор' AND d.name = 'Интенсивной терапии'
 ORDER BY equipment.model;

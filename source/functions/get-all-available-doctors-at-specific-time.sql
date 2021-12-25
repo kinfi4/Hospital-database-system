@@ -34,8 +34,6 @@ $$
                 doctor_timetable := row.timetable;
 
                 RETURN NEXT;
-              ELSE
-                RAISE INFO 'Doctor timetable: %', row.timetable;
             END IF;
         END LOOP;
     END;

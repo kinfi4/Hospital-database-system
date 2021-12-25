@@ -6,6 +6,8 @@
 SELECT
     doc.id,
     doc.first_name || ' ' || doc.last_name AS full_name,
+    da.time AS appointment_time,
+    da.cabinet_number,
     count(*) OVER (PARTITION BY doc.id) AS number_of_appointments
 FROM doctor doc
     JOIN doctor_specialization ds ON doc.specialization_id = ds.id
